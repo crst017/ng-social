@@ -3,11 +3,10 @@
   aria-label="Global"
 >
   <div class="flex flex-1">
-    <a routerLink="/feed" class="-m-1.5 p-1.5">
+    <a (click)="goToFeed()" class="-m-1.5 p-1.5 cursor-pointer">
       <img
         class="h-8 w-auto"
         src="https://tailwindui.com/img/logos/mark.svg?color=white"
-        alt=""
       />
     </a>
   </div>
@@ -17,7 +16,7 @@
     <a href="#" class="text-lg text-white">Company</a>
   </div>
   <div class="lg:flex lg:flex-1 lg:justify-end">
-    <a class="text-lg text-white"
+    <a class="text-lg text-white cursor-pointer" (click)="logout()"
       >Sign out <span aria-hidden="true">&rarr;</span></a
     >
   </div>

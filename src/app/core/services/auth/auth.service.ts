@@ -1,6 +1,7 @@
 import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
 import { User } from 'src/app/core/models/user.model';
 
@@ -14,6 +15,7 @@ export class AuthService {
   private readonly URL = 'http://localhost:3000';
   constructor(
     private http: HttpClient,
+    private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
@@ -36,6 +38,11 @@ export class AuthService {
     );
   }
 
+  logout(): void {
+    this.removeToken();
+    this.router.navigate(['/login']);
+  }
+
   isLoggedIn(): boolean {
     if (isPlatformBrowser(this.platformId)) {
       return !!this.token;
@@ -46,6 +53,12 @@ export class AuthService {
   private saveToken(token: string): void {
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem('auth_token', token);
+    }
+  }
+
+  private removeToken(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem('auth_token');
     }
   }
 }
