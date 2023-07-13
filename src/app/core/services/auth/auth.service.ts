@@ -29,6 +29,13 @@ export class AuthService {
     );
   }
 
+  isLoggedIn(): boolean {
+    if (isPlatformBrowser(this.platformId)) {
+      return !!localStorage.getItem('auth_token');
+    }
+    return false;
+  }
+
   private saveToken(token: string): void {
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem('auth_token', token);
