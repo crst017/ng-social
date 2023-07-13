@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Post } from './post/post.model';
 import { PostService } from '../core/services/feed/post.service';
 
 @Component({
