@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { CoreModule } from './core/core.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const interceptors = [
   {
@@ -16,7 +17,7 @@ const interceptors = [
 ];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, NotFoundComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, CoreModule],
   providers: [interceptors],
   bootstrap: [AppComponent],
