@@ -25,9 +25,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(private auth: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.loginForm.valueChanges.subscribe(console.log);
-  }
+  ngOnInit(): void {}
 
   ngOnDestroy(): void {
     this.unsubscribe$.next();
