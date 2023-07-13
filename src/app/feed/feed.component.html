@@ -1,1 +1,3 @@
-<ngsocial-post *ngFor="let post of posts" [post]="post"></ngsocial-post>
+<ng-container *ngFor="let post of posts$ | async">
+  <ngsocial-post [post]="post"></ngsocial-post>
+</ng-container>

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Post } from './post/post.model';
+import { PostService } from '../core/services/feed/post.service';
 
 @Component({
   selector: 'ngsocial-feed',
@@ -8,9 +9,7 @@ import { Post } from './post/post.model';
   styleUrls: ['./feed.component.scss'],
 })
 export class FeedComponent {
-  posts: Post[] = [
-    { id: '1', value: 'Test1', date: new Date() },
-    { id: '2', value: 'Test2', date: new Date() },
-    { id: '3', value: 'Test3', date: new Date() },
-  ];
+  posts$ = this.postService.getPosts();
+
+  constructor(private postService: PostService) {}
 }
