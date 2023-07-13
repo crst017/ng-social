@@ -1,6 +1,28 @@
 <ng-container *ngIf="post">
-  <div class="post-container" [routerLink]="['/feed', post._id]">
-    {{ post.text }}
-    {{ post.createdAt | date : "short" }}
-  </div>
+  <li
+    class="mx-auto flex justify-between w-[800px] gap-x-6 p-10 border-2 border-indigo-900 rounded-2xl my-10 cursor-pointer bg-indigo-200"
+    [routerLink]="['/feed', post._id]"
+  >
+    <div class="flex gap-x-4">
+      <img
+        class="h-12 w-12 flex-none rounded-full border-2 border-indigo-900 bg-gray-50"
+        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=900"
+        alt=""
+      />
+      <div class="min-w-0 flex-auto">
+        <p class="text-2xl font-bold leading-6 text-gray-900">
+          {{ post.author.username }}
+        </p>
+        <p class="mt-1 truncate text-base leading-5 text-gray-500">
+          {{ post.text }}
+        </p>
+      </div>
+    </div>
+    <div class="hidden sm:flex sm:flex-col sm:items-end">
+      <p class="text-base leading-6 font-medium text-gray-900">Created At:</p>
+      <p class="mt-1 text-base font-medium leading-5 text-gray-500">
+        {{ post.createdAt | date : "short" }}
+      </p>
+    </div>
+  </li>
 </ng-container>
