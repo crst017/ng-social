@@ -17,6 +17,13 @@ export class AuthService {
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
+  get token(): string | null {
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage.getItem('auth_token');
+    }
+    return null;
+  }
+
   signup(userData: User): Observable<User> {
     return this.http.post<User>(`${this.URL}/auth/signup`, userData);
   }
@@ -31,7 +38,7 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     if (isPlatformBrowser(this.platformId)) {
-      return !!localStorage.getItem('auth_token');
+      return !!this.token;
     }
     return false;
   }
