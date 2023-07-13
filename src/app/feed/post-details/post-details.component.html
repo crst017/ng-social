@@ -1,1 +1,44 @@
-<p>post-details works!</p>
+<ng-container *ngIf="post$ | async as post">
+  <section
+    class="relative isolate overflow-hidden mx-auto bg-white px-6 py-24 sm:py-32 lg:px-8 w-2/3 rounded-3xl"
+  >
+    <div
+      class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20"
+    ></div>
+    <div
+      class="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center"
+    ></div>
+    <div class="mx-auto max-w-2xl lg:max-w-4xl">
+      <img
+        class="mx-auto h-20"
+        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+        alt=""
+      />
+      <figure class="mt-10">
+        <blockquote
+          class="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9"
+        >
+          <p>{{ post.author.username | uppercase }} said:</p>
+        </blockquote>
+        <span class="flex justify-center text-lg font-normal text-gray-900">{{
+          post.text
+        }}</span>
+        <div class="mt-10 flex items-center justify-center space-x-3 text-base">
+          <div class="font-semibold text-gray-900">Published</div>
+          <svg
+            viewBox="0 0 2 2"
+            width="3"
+            height="3"
+            aria-hidden="true"
+            class="fill-gray-900"
+          >
+            <circle cx="1" cy="1" r="1" />
+          </svg>
+          <div class="text-gray-600">
+            {{ post.createdAt | date }}
+          </div>
+        </div>
+      </figure>
+    </div>
+  </section>
+</ng-container>
