@@ -7,10 +7,14 @@ import { Post } from 'src/app/core/models/post.model';
   providedIn: 'root',
 })
 export class PostService {
-  private readonly URL = 'http://localhost:3000';
+  private readonly URL = 'http://localhost:3000/post';
   constructor(private http: HttpClient) {}
 
   getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(`${this.URL}/post`);
+    return this.http.get<Post[]>(`${this.URL}`);
+  }
+
+  getPostDetails(id: string): Observable<Post> {
+    return this.http.get<Post>(`${this.URL}/${id}`);
   }
 }
