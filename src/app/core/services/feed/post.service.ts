@@ -11,11 +11,6 @@ export class PostService {
   constructor(private http: HttpClient) {}
 
   getPosts(): Observable<Post[]> {
-    // return this.http.get<Post[]>(`${this.URL}/post`)
-    return of([
-      { id: '1', value: 'Test1', date: new Date() },
-      { id: '2', value: 'Test2', date: new Date() },
-      { id: '3', value: 'Test3', date: new Date() },
-    ]);
+    return this.http.get<Post[]>(`${this.URL}/post`);
   }
 }
